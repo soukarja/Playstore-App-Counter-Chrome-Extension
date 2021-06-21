@@ -1,0 +1,30 @@
+{
+"manifest_version": 2,
+"name": "Playstore App Counter",
+"version": "1.0",
+"description": "Count Playstore Apps.",
+"content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["js/content.js"]
+    }
+  ],
+"permissions": [
+    "contextMenus",
+    "tabs"
+],
+"background": {
+    "scripts": ["js/background.js"]
+},
+"browser_action" : {
+    "default_icon" : "images/icon.png"
+},
+"icons": {
+    "16": "images/icon.png",
+    "32": "images/icon.png",
+    "48": "images/icon.png",
+    "128":"images/icon.png"
+   }
+}
