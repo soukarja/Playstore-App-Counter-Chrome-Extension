@@ -1,10 +1,7 @@
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.message === "clicked_browser_action") {
-
-    var apps = document.querySelectorAll(
-      'c-wiz > div >div > div[class="uzcko"] > div'
-    );
-
+    
+    
     var existing_countsers = document.querySelectorAll('.app_counter');
 
     if (existing_countsers.length > 0)
@@ -12,8 +9,20 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
       existing_countsers.forEach(function(item, index){
           item.parentNode.removeChild(item);
       });
+      // var prev = document.querySelector('.countchecked');
+      // prev.className = prev.className.replace('countchecked', '');
     }
     else{
+      
+    // document.querySelector('.countchecked').remove();
+    var prev = document.querySelector('.countchecked');
+    if (prev != null)
+    {
+      prev.remove();
+    }
+    var apps = document.querySelectorAll(
+      'c-wiz > div >div > div[class="uzcko"] > div'
+    );
     apps.forEach(function (item, index) {
       var temp = item.innerHTML;
       var box = document.createElement("span");
@@ -26,6 +35,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
       //item.appendChild(box);
     });
+    var parentElim = apps[0].parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+    // apps[0].parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+    parentElim.className = parentElim.className + " countchecked";
   }
   }
 });
+// document.querySelectorAll('c-wiz > div >div > div[class="uzcko"] > div')[0].parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
